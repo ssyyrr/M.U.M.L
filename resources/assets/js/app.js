@@ -142,8 +142,10 @@ $(function () {
 
     $("#profile").on("change",function(e){
         $('#grade').empty()
-        $("#divgrade").show()
+
         if( $(this).val()==="Enseignant"){
+            $("#divgrade").show()
+
             $('#grade').append('<option value="P.E.S">P.E.S</option>');
             $('#grade').append('<option value="Assisstant">Assisstant</option>');
             $('#grade').append('<option value="Maitre Technologue">Maitre Technologue</option>');
@@ -152,17 +154,20 @@ $(function () {
             $('#grade').append('<option value="Professeur">Professeur</option>');
         }
         else{
-             $('#grade').append('<option value="Etudiant">Etudiant</option>');
+            $("#divgrade").hide()
+
+            $('#grade').append('<option value="Etudiant">Etudiant</option>');
         }
     });
 
 
     $(document).ready(function(){
         $(":input").inputmask();
+        $('select').select2();
+
     })
 
     //Initialize Select2 Elements
-    $('.select2').select2()
 
     //Datemask dd/mm/yyyy
     $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
