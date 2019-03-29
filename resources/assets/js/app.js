@@ -162,19 +162,23 @@ $(function () {
 
 
     $(document).ready(function(){
-        $(":input").inputmask();
-        $('select').select2();
+        $("input").inputmask();
+        $('select').select2({
+            tags: "true",
+            placeholder: "--Select an option--",
+            allowClear: true
+        });
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+        $('[data-mask]').inputmask();
 
     })
 
     //Initialize Select2 Elements
 
     //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
     //Datemask2 mm/dd/yyyy
     $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
     //Money Euro
-    $('[data-mask]').inputmask()
 
     //Date range picker
     $('#reservation').daterangepicker()

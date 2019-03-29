@@ -1,6 +1,8 @@
 @extends('layouts.form')
 @section('card')
 
+
+
     @component('components.card')
 
         @slot('title')
@@ -19,10 +21,12 @@
                           'name' => 'cin',
                           'required' => true,
                          'span'=>'fas fa-address-card',
-                          'alias'=> '',
-                              'cat'=> 'alias',
+                          'alias'=> '99999999',
+                          'cat'=> 'mask',
 
                            ])
+                        {{--'alias'=> '',--}}
+                        {{--'cat'=> 'alias',--}}
 
                         @include('partials.form-group', [
                                                  'title' => __('Nom'),
@@ -52,8 +56,8 @@
                                              'name' => 'datenaissance',
                                              'required' => true,
                                             'span'=>'fa fa-calendar',
-                                            'alias'=> 'mm/dd/yyyy',
-                                                'cat'=> 'alias',
+                                            'alias'=> 'dd/mm/yyyy',
+                                             'cat'=> 'alias',
                                               ])
 
                         @include('partials.form-group', [
@@ -129,6 +133,7 @@
                                 <select id="etablissement_id"
                                         type="text" class="form-control input-sm {{ $errors->has('etablissement_id') ? ' is-invalid' : '' }}"
                                         name="etablissement_id" value="{{ old('etablissement_id') }}" required autofocus>
+                                    <option value=''> --Select Etablissement-- </option>
 
                                              @if(!empty($etablissements))
 
@@ -166,6 +171,7 @@
                                     </span>
                             @endif
                         </div>
+
                         <div class="form-group row" id="divgrade" style="display:none;">
                             <label for="grade" class="col-md-4 col-form-label text-md-right">{{ __('Grade Utilisateur') }}</label>
                             <span class="fas fa-user-graduate form-control-row"  aria-hidden="true" ></span>

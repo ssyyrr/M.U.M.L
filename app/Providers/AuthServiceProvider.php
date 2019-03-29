@@ -40,7 +40,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('isUser',function($user){
-            return $user->type === 'User';
+            return $user->type === 'Etudiant';
 
         });
         Gate::define('isSuperadministratorOrAdministratorOrEnseignant',function($user){
@@ -55,7 +55,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->type === 'Administrator' ||  $user->type === 'Enseignant' ;
         });
         Gate::define('isUserOrEnseignant',function($user){
-            return $user->type === 'User' ||  $user->type === 'Enseignant' ;
+            return $user->type === 'Etudiant' ||  $user->type === 'Enseignant' ;
         });
 
 

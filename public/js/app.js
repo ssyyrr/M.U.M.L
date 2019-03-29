@@ -30871,8 +30871,10 @@ $(function () {
 
     $("#profile").on("change", function (e) {
         $('#grade').empty();
-        $("#divgrade").show();
+
         if ($(this).val() === "Enseignant") {
+            $("#divgrade").show();
+
             $('#grade').append('<option value="P.E.S">P.E.S</option>');
             $('#grade').append('<option value="Assisstant">Assisstant</option>');
             $('#grade').append('<option value="Maitre Technologue">Maitre Technologue</option>');
@@ -30880,23 +30882,29 @@ $(function () {
             $('#grade').append('<option value="Maitre de conference">Maitre de conference</option>');
             $('#grade').append('<option value="Professeur">Professeur</option>');
         } else {
+            $("#divgrade").hide();
+
             $('#grade').append('<option value="Etudiant">Etudiant</option>');
         }
     });
 
     $(document).ready(function () {
-        $(":input").inputmask();
+        $("input").inputmask();
+        $('select').select2({
+            tags: "true",
+            placeholder: "--Select an option--",
+            allowClear: true
+        });
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+        $('[data-mask]').inputmask();
     });
 
     //Initialize Select2 Elements
-    $('.select2').select2();
 
     //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
     //Datemask2 mm/dd/yyyy
     $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' });
     //Money Euro
-    $('[data-mask]').inputmask();
 
     //Date range picker
     $('#reservation').daterangepicker();
@@ -72871,7 +72879,7 @@ var Gate = function () {
         key: 'isUser',
         value: function isUser() {
 
-            return this.user.type === 'User';
+            return this.user.type === 'Etudiant';
         }
     }, {
         key: 'isSuperadministratorOrAdministratorOrEnseignant',
@@ -72904,7 +72912,7 @@ var Gate = function () {
         key: 'isUserOrEnseignant',
         value: function isUserOrEnseignant() {
 
-            if (this.user.type === 'User' || this.user.type === 'Enseignant') {
+            if (this.user.type === 'Etudiant' || this.user.type === 'Enseignant') {
 
                 return true;
             }

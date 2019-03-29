@@ -21,7 +21,7 @@ export default class Gate{
     }
     isUser(){
 
-        return this.user.type === 'User';
+        return this.user.type === 'Etudiant';
 
     }
     isSuperadministratorOrAdministratorOrEnseignant(){
@@ -50,7 +50,7 @@ export default class Gate{
     }
     isUserOrEnseignant(){
 
-        if(this.user.type === 'User' || this.user.type === 'Enseignant'){
+        if(this.user.type === 'Etudiant' || this.user.type === 'Enseignant'){
 
             return true;
 

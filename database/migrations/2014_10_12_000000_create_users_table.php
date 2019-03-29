@@ -24,11 +24,11 @@ class CreateUsersTable extends Migration
             $table->string('universite_id');
             $table->string('etablissement_id');
             $table->string('profile')->default('Etudiant');
-            $table->string('grade')->default('License');
+            $table->string('grade')->default('Etudiant');
             $table->mediumText('addresse')->nullable();
             $table->string('numtel');
 
-            $table->string('type')->default('user');
+            $table->string('type')->default('Etudiant');
             $table->mediumText('bio')->nullable();
             $table->string('photo')->default('logo.jpg');
             $table->rememberToken();
@@ -45,7 +45,7 @@ class CreateUsersTable extends Migration
             'prenom' => 'administrator',
             'datenaissance' => '01/01/2019',
             'email' => 'administrator@example.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('123456'),
             'universite_id' => '30',
             'etablissement_id' => '222',
             'profile' => 'Enseignant',
