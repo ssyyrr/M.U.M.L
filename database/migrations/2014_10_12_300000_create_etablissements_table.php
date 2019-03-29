@@ -86,7 +86,7 @@ class CreateEtablissementsTable extends Migration
 //(57,38,'Institut SupÃ©rieur des Beaux Arts de Tunis','isbat',1133),
 //(58,38,'Institut SupÃ©rieur de Musique','ismt',1134),
 //(59,38,'Institut SupÃ©rieur d\'Art Dramatique','isad',1135),
-//(60,38,'Institut SupÃ©rieur de l\'Education et de la Formation Continue','isefc',1136),
+//(60,30,'Institut SupÃ©rieur de l\'Education et de la Formation Continue','isefc',1136),
 //(61,38,'Institut SupÃ©rieur des Sciences Culturelles et MÃ©tiers du Patrimoine de Tunis','isscmpt',1137),
 //(62,38,'Institut SupÃ©rieur des Etudes AppliquÃ©es en HumanitÃ© de Tunis','iseaht',1138),
 //(63,38,'Institut SupÃ©rieur de l\'Animation pour la Jeunesse et la Culture','isajc',1139),

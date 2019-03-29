@@ -19,10 +19,11 @@ try {
 
     // require ('jquery/dist/jquery.js');
 
+
     require('admin-lte/plugins/input-mask/jquery.inputmask.js');
     require('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js');
     require('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js');
-    require('admin-lte/plugins/input-mask/jquery.inputmask.bundle.js');
+    // require('admin-lte/plugins/input-mask/jquery.inputmask.bundle.js');
 
 
     require('admin-lte/plugins/select2/select2.full.min.js');

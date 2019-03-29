@@ -79,12 +79,36 @@
 
                     <form @submit.prevent="editmode ? updateUser() : createUser()">
                         <div class="modal-body">
-                            <div class="form-group">
-                                <input v-model="form.cin" type="text" name="cin"
-                                       placeholder="Carte Identite Nationale"
-                                       class="form-control" :class="{ 'is-invalid': form.errors.has('cin') }">
-                                <has-error :form="form" field="cin"></has-error>
+
+
+                            <div class="form-group row">
+                                <label for='cin' class="col-md-4 col-form-label text-md-right">Carte Identite Nationale</label>
+                                <span class="fas fa-address-card form-control-row"  aria-hidden="true" ></span>
+
+                                <div class="col-md-6">
+                                    <input id='cin'
+                                           type='text'
+                                           v-model="form.cin"
+                                           placeholder="Carte Identite Nationale"
+                                           data-inputmask="'mask':'99999999'"  data-mask
+                                           name='cin' required
+                                    class="form-control" :class="{ 'is-invalid': form.errors.has('cin') }">
+                                    <has-error :form="form" field="cin"></has-error>
+
+                                </div>
                             </div>
+
+
+
+
+
+
+                            <!--<div class="form-group">-->
+                                <!--<input v-model="form.cin" type="text" name="cin"-->
+                                       <!--placeholder="Carte Identite Nationale"-->
+                                       <!--class="form-control" :class="{ 'is-invalid': form.errors.has('cin') }">-->
+                                <!--<has-error :form="form" field="cin"></has-error>-->
+                            <!--</div>-->
 
                             <div class="form-group">
                                 <input v-model="form.name" type="text" name="name"
@@ -145,8 +169,6 @@
                                         <option value="Etudiant">Etudiant</option>
                                         <option value="Enseignant">Enseignant</option>
 
-                                        <!--<option value="user">etudiant</option>-->
-                                        <!--<option value="admin">enseignant</option>-->
                                 </select>
                                 <has-error :form="form" field="profile"></has-error>
                             </div>
@@ -257,6 +279,13 @@
                     });
             },
             updateUser(){
+                $(document).ready(function(){
+                    $("input").inputmask();
+
+                    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+                    $('[data-mask]').inputmask();
+
+                })
                 this.$Progress.start();
                 // console.log('Editing data');
                 this.form.put('api/user/'+this.form.id)

@@ -14,7 +14,6 @@ import { Form, HasError, AlertError } from 'vform';
 import Gate from "./Gate";
 Vue.prototype.$gate = new Gate(window.user);
 
-
 import swal from 'sweetalert2'
 window.swal = swal;
 
@@ -27,12 +26,12 @@ const toast = swal.mixin({
 
 window.toast = toast;
 
-
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
 Vue.component('pagination', require('laravel-vue-pagination'));
+
 
 
 import VueRouter from 'vue-router'
@@ -146,17 +145,22 @@ $(function () {
         if( $(this).val()==="Enseignant"){
             $("#divgrade").show()
 
-            $('#grade').append('<option value="P.E.S">P.E.S</option>');
+            $('#grade').append('<option value="P.E.S">Professeur de l\'Enseignement Sécondaire</option>');
             $('#grade').append('<option value="Assisstant">Assisstant</option>');
-            $('#grade').append('<option value="Maitre Technologue">Maitre Technologue</option>');
-            $('#grade').append('<option value="Maitre Assisstant">Maitre Assisstant</option>');
-            $('#grade').append('<option value="Maitre de conference">Maitre de conference</option>');
-            $('#grade').append('<option value="Professeur">Professeur</option>');
+             $('#grade').append('<option value="Maître Technologue">Maître Technologue</option>');
+            $('#grade').append('<option value="Maître Assisstant">Maître Assisstant</option>');
+            $('#grade').append('<option value="Maître de conférences">Maître de Conférences</option>');
+            $('#grade').append('<option value="Professeur">Professeur de l\'Enseignement Supérieur</option>');
         }
         else{
-            $("#divgrade").hide()
+            $("#divgrade").show()
 
-            $('#grade').append('<option value="Etudiant">Etudiant</option>');
+            $('#grade').append('<option value="Etudiant">Cycle Préparatoire</option>');
+            $('#grade').append('<option value="Etudiant">License</option>');
+            $('#grade').append('<option value="Etudiant">Mastère</option>');
+            $('#grade').append('<option value="Etudiant">Ingénierie </option>');
+            $('#grade').append('<option value="Etudiant">Médecine</option>');
+            $('#grade').append('<option value="Etudiant">Pharmacie</option>');
         }
     });
 

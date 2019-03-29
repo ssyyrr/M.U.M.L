@@ -15,6 +15,8 @@
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}" name="register">
                         {{ csrf_field() }}
 
+
+
                         @include('partials.form-group', [
                          'title' => __('Carte Identite Nationale'),
                           'type' => 'text',

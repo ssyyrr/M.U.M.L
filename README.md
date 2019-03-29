@@ -7,6 +7,7 @@
 * JWT with Laravel Passport and JavaScript Request
 * Vue form with Laravel
 * datemask-inputmask from adminLte
+* select2
 * getdata format json
 
 * Relational Database with Laravel
@@ -23,8 +24,15 @@
 * Run ` npm install ` 
 * Run ` php artisan migrate ` 
 * Run ` composer dump-autoload ` 
- 
+
+
 * login :administrator@example.com
 * pwd : 123456
 
-
+-------------------------------------------
+ * npm install -S vue-inputmask
+  * npm audit fix
+rm -rf node_modules
+rm package-lock.json yarn.lock
+npm cache clear --force
+npm install
