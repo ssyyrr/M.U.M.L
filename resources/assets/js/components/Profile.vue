@@ -169,37 +169,39 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="inputprofile" class="col-sm-4 control-label">profile</label>
+
+
+                                    <div class="form-group" id="vue-example" >
+                                        <label for="inputprofile" class="col-sm-4 control-label">
+                                            <span> profile : {{ form.profile }} </span>
+                                        </label>
 
                                         <div class="col-sm-12">
-                                            <select name="profile" v-model="form.profile" class="form-control" id="inputprofile" placeholder="profile"
+                                            <select
+                                                     style="width: 50%" name="profile" v-model="form.profile "
+                                                     class="form-control" id="profile" placeholder="profile"
                                                     :class="{ 'is-invalid': form.errors.has('profile') }">
-                                                <option value="">Select User Profile</option>
-                                                <option value="Etudiant">Etudiant</option>
-                                                <option value="Enseignant">Enseignant</option>
+                                                        <option selected="Etudiant" value="Etudiant">Etudiant</option>
+                                                        <option value="Enseignant">Enseignant</option>
+
                                             </select>
+
+
                                             <has-error :form="form" field="profile"></has-error>
                                         </div>
-                                    </div>
+                                        <br>
 
-                                    <div class="form-group">
-                                        <label for="inputgrade" class="col-sm-4 control-label">grade</label>
+                                         <label for="inputgrade"
+                                               class="col-sm-4 control-label">
+                                            <span>   grade : {{ form.grade }}  </span>
+                                        </label>
 
                                         <div class="col-sm-12">
-                                            <select  name="grade" v-model="form.grade" class="form-control" id="inputgrade" placeholder="grade"
+                                            <select
+                                                      style="width: 50%" name="grade" v-model="form.grade"
+                                                     class="form-control" id="grade" placeholder="grade"
                                                      :class="{ 'is-invalid': form.errors.has('grade') }" >
-                                                <option value="">Select User Grade</option>
-                                                <option value="Professeur">Professeur</option>
-                                                <option value="Maitre de conference">Maitre de conference</option>
-                                                <option value="Maitre Assisstant">Maitre Assisstant</option>
-                                                <option value="Maitre Technologue">Maitre Technologue</option>
-                                                <option value="Technologue">Technologue</option>
-                                                <option value="Assisstant">Assisstant</option>
-                                                <option value="P.E.S">Professeur d'enseignement supérieur</option>
-                                                <option value="etudiant">Etudiant</option>
-
-                                            </select>
+                                             </select>
                                             <has-error :form="form" field="grade"></has-error>
                                         </div>
                                     </div>
@@ -259,12 +261,17 @@
 
                                     </div>
 
-
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-12">
                                     <button @click.prevent="updateInfo" type="submit" class="btn btn-success">Update</button>
                                     </div>
                                 </div>
+
+
+
+
+
+
                                 </form>
                             </div>
                         <!-- /.tab-pane -->
@@ -284,9 +291,10 @@
 <script>
 
     export default {
-        data(){
+         data(){
             return {
-                 form: new Form({
+
+                form: new Form({
                      id:'',
                      cin:'',
                      name : '',
@@ -303,6 +311,9 @@
                      type: '',
                      bio: '',
                      photo: ''
+
+
+
                 })
             }
         },

@@ -97,7 +97,8 @@
                             <span class="fas fa-university  form-control-row"  aria-hidden="true" ></span>
                             <div class="col-md-6">
 
-                                <select id="universite_id" type="text"
+                                <select style="width: 100%"
+                                        id="universite_id" type="text"
                                         class="form-control input-sm {{ $errors->has('universite_id') ? ' is-invalid' : '' }}"
                                         {{-- linked-select  data-target="#etablissement" onchange="divetablissement()"--}}
 
@@ -132,7 +133,8 @@
                             <label for="etablissement_id" class="col-md-4 col-form-label text-md-right">{{ __('Etablissement') }}</label>
                             <span class="fas fa-home   form-control-row"  aria-hidden="true" ></span>
                             <div class="col-md-6">
-                                <select id="etablissement_id"
+                                <select style="width: 100%"
+                                        id="etablissement_id"
                                         type="text" class="form-control input-sm {{ $errors->has('etablissement_id') ? ' is-invalid' : '' }}"
                                         name="etablissement_id" value="{{ old('etablissement_id') }}" required autofocus>
                                     <option value=''> --Select Etablissement-- </option>
@@ -159,7 +161,7 @@
                             <label for="profile" class="col-md-4 col-form-label text-md-right">{{ __('Profile Utilisateur') }}</label>
                             <span class="fas fa-graduation-cap   form-control-row"  aria-hidden="true" ></span>
                             <div class="col-md-6">
-                                <select id="profile" type="text" class="form-control{{ $errors->has('profile') ? ' is-invalid' : '' }}" name="profile" value="{{ old('profile') }}" required autofocus>
+                                <select style="width: 100%"  id="profile" type="text" class="form-control{{ $errors->has('profile') ? ' is-invalid' : '' }}" name="profile" value="{{ old('profile') }}" required autofocus>
                                     <option value="">Select User Role</option>
                                     <option value="Etudiant">Etudiant</option>
                                     <option value="Enseignant">Enseignant</option>
@@ -173,12 +175,11 @@
                                     </span>
                             @endif
                         </div>
-
                         <div class="form-group row" id="divgrade" style="display:none;">
                             <label for="grade" class="col-md-4 col-form-label text-md-right">{{ __('Grade Utilisateur') }}</label>
                             <span class="fas fa-user-graduate form-control-row"  aria-hidden="true" ></span>
                             <div class="col-md-6">
-                                <select id="grade" type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : '' }}"
+                                <select style="width: 100%"  id="grade" style="width: 50%" type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : '' }}"
                                         name="grade" value="{{ old('grade') }}" required autofocus>
 
                                 </select>
@@ -189,6 +190,7 @@
                                     </span>
                             @endif
                         </div>
+
 
                         @include('partials.form-group', [
                                            'title' => __('Addresse'),

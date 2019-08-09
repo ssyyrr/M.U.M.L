@@ -28,9 +28,13 @@ class UniversiteController extends Controller
 
     public function index()
     {
+//        $universites = Universite::all();
+//         return view('layouts.sections.sidebar',compact('universites'));
+//
+////         )->with('universites', $universites);
 
       }
-    /**
+    /**&
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

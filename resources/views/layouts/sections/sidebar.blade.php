@@ -64,9 +64,20 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+
+                            @if(!empty($universites))
+                            @foreach($universites as $universite )
+                                     <p>{{ $universite->id }} -{{ $universite->intitule}} </p>
+
+                            @endforeach
+                            @endif
+
+
+
                             <li class="nav-item">
                                 <router-link to="/users" class="nav-link">
                                     <i class="fas fa-users nav-icon"></i>
+
                                     <p>Users</p>
                                 </router-link>
                             </li>

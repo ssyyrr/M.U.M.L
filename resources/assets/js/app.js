@@ -102,11 +102,15 @@ Vue.component(
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+
 const app = new Vue({
     el: '#app',
     router,
+
     data:{
-        search: ''
+        search: '',
+
+
     },
     methods:{
         searchit: _.debounce(() => {
@@ -115,9 +119,14 @@ const app = new Vue({
 
         printme() {
             window.print();
-        }
+        },
+
     }
 });
+
+
+
+
 
 var $ = jQuery;
 $(function () {
@@ -147,7 +156,7 @@ $(function () {
 
             $('#grade').append('<option value="P.E.S">Professeur de l\'Enseignement Sécondaire</option>');
             $('#grade').append('<option value="Assisstant">Assisstant</option>');
-             $('#grade').append('<option value="Maître Technologue">Maître Technologue</option>');
+            $('#grade').append('<option value="Maître Technologue">Maître Technologue</option>');
             $('#grade').append('<option value="Maître Assisstant">Maître Assisstant</option>');
             $('#grade').append('<option value="Maître de conférences">Maître de Conférences</option>');
             $('#grade').append('<option value="Professeur">Professeur de l\'Enseignement Supérieur</option>');
@@ -155,34 +164,68 @@ $(function () {
         else{
             $("#divgrade").show()
 
-            $('#grade').append('<option value="Etudiant">Cycle Préparatoire</option>');
-            $('#grade').append('<option value="Etudiant">License</option>');
-            $('#grade').append('<option value="Etudiant">Mastère</option>');
-            $('#grade').append('<option value="Etudiant">Ingénierie </option>');
-            $('#grade').append('<option value="Etudiant">Médecine</option>');
-            $('#grade').append('<option value="Etudiant">Pharmacie</option>');
+            $('#grade').append('<option value="Cycle Préparatoir">Cycle Préparatoire</option>');
+            $('#grade').append('<option value="License">License</option>');
+            $('#grade').append('<option value="Mastère">Mastère</option>');
+            $('#grade').append('<option value="Ingénierie">Ingénierie </option>');
+            $('#grade').append('<option value="Médecine">Médecine</option>');
+            $('#grade').append('<option value="Pharmacie">Pharmacie</option>');
         }
     });
 
 
     $(document).ready(function(){
-        $("input").inputmask();
+         $("input").inputmask();
+
+        // Set up a Select2 control
         $('select').select2({
             tags: "true",
             placeholder: "--Select an option--",
+            width: 'resolve',
             allowClear: true
         });
+
+        // Bind an event
+        $('select').on('select2:select', function (e) {
+            console.log('select event');
+        });
+        $('select').on("click", function () {
+            this.val("CA").trigger("change");
+        });
+        $('select').on('select2:select', function (e) {
+
+            var data = e.params.data;
+            console.log(data);
+
+        });
+        // Destroy Select2
+        //         $('select').select2('destroy');
+        //
+        //         // Unbind the event
+        //         $('select').off('select2:select');
+
+
+                        // $('select').on('change',function(){
+                        //     $(this.$el)['selected'] = $(this).val();
+                        // });
+                        //
+                        //
+                        // $(this.$el).$watch('selected', function(val){
+                        //     $('select').select2();
+                        // });
+
+
         $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
         $('[data-mask]').inputmask();
 
     })
 
-    //Initialize Select2 Elements
 
-    //Datemask dd/mm/yyyy
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
+
+
+
+
+
 
     //Date range picker
     $('#reservation').daterangepicker()

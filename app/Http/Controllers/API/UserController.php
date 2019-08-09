@@ -5,7 +5,10 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Universite;
+use App\Etablissement;
 use Illuminate\Support\Facades\Hash;
+use function PHPSTORM_META\type;
 
 
 class UserController extends Controller
@@ -23,15 +26,48 @@ class UserController extends Controller
 //                                        // $this->authorize('isAdmin');
 
         if (\Gate::allows('isSuperadministratorOrAdministrator')) {
-            return User::latest()->paginate(5);
+//            return User::latest() ->paginate(5);
+//            $universites = Universite::all();
+             return User::with('Universite')
+
+                                     ->where('type', '!=', 'Superadministrator')
+                                          ->orderBy('universite_id', 'ASC')
+                                             ->orderBy('type', 'ASC')
+
+
+                 ->paginate(5);
+
+
+
+
         }
         else{
             if( \Gate::allows('isEnseignant')){
                 $etab = auth()->user()->etablissement_id;
-                return User::where('etablissement_id',$etab)->paginate(5);
+                return User::with('Universite')
+                                         ->where('type', '!=', 'Superadministrator')
+                                        ->where('type', '!=', 'Administrator')
+
+                                              ->where('etablissement_id',$etab)
+
+                                                  ->orderBy('universite_id', 'ASC')
+                                                    ->orderBy('type', 'ASC')
+
+                                ->paginate(5);
             }
         }
-    }
+
+
+     }
+
+//
+//User::whereDoesntHave('granteeReports',  function($q){
+//    $q->where('year', '=',  2017 );
+//})->get();
+
+
+
+
 
 
     public function store(Request $request)

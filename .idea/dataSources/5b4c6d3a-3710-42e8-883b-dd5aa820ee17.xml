@@ -1360,7 +1360,7 @@
     </column>
     <column id="320" parent="258" name="cin">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1417,7 +1417,7 @@
       <Position>11</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;License&apos;</DefaultExpression>
+      <DefaultExpression>&apos;Etudiant&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="330" parent="258" name="addresse">
@@ -1435,7 +1435,7 @@
       <Position>14</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;user&apos;</DefaultExpression>
+      <DefaultExpression>&apos;Etudiant&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="333" parent="258" name="bio">

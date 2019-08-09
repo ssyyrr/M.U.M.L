@@ -12,45 +12,55 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
+
                     <div class="card-body table-responsive p-0">
+                        <ul v-for="user in users.data" :key="user.id ">
+                            <li> <i class="fa fa-landmark purple"> {{user.universite.intitule}} </i></li>
+                                         <table class="table table-hover">
+                                            <tbody>
+                                            <tr>
+                                                <!--<th>ID</th>-->
 
-                        <table class="table table-hover">
-                            <tbody>
-                            <tr>
-                                <th>ID</th>
-                                <th>cin</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Type</th>
-                                <th>universite</th>
+                                                <th> <i class="fa fa-user"> </i> Name</th>
+                                                <th> <i class="fa fa-user-friends"> </i>Prenom</th>
+                                                <th> <i class="fa fa-at"> </i>Email</th>
+                                                <!--<th>universite</th>-->
+                                                <th> <i class="fa fa-university"> </i>etablissement</th>
+                                                <th> <i class="fa fa-user-shield"> </i>Type</th>
 
-                                <th>Registered At</th>
-                                <th>Modify</th>
-                                <th>Delete</th>
+                                                <th> <i class="fa fa-calendar"> </i>Registered At</th>
+                                                <th> <i class="fa fa-edit  blue"> Modify </i></th>
+                                                <th> <i class="fa fa-trash red"> Delete </i></th>
 
-                            </tr>
+                                            </tr>
 
-                            <tr v-for="user in users.data" :key="user.id ">
-                                <td>{{user.id}}</td>
-                                <td>{{user.cin}}</td>
-                                <td>{{user.name}}</td>
-                                <td>{{user.email}}</td>
-                                <td>{{user.type | upText}}</td>
-                                <td>{{user.universite_id}}</td>
-                                <td>{{user.created_at | myDate}}</td>
+                                            <!-- <tr v-for="user in users.data" :key="user.id "> -->
+                                            <tr>
+                                                    <!--<td>{{user.id}}</td>-->
+                                                    <td>{{user.name}}</td>
+                                                    <td>{{user.prenom}}</td>
+                                                    <td>{{user.email}}</td>
+                                                    <!--<td>{{user.universite.intitule}}</td>-->
+                                                     <td>{{user.etablissement_id}}</td>
+                                                      <!--<td>{{user.etablissement.intitule}}</td>-->
 
-                                <td>
-                                    <a href="#" @click="editModal(user)">
-                                        <i class="fa fa-edit blue"></i>
-                                    </a>
-                                 </td>
-                                <td>
-                                    <a href="#" @click="deleteUser(user.id)">
-                                        <i class="fa fa-trash red"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            </tbody></table>
+                                                    <td >{{user.type | upText}}</td>
+                                                    <td>{{user.created_at | myDate}}</td>
+
+                                                    <td>
+                                                        <a href="#" @click="editModal(user)">
+                                                            <i class="fa fa-edit blue"></i>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" @click="deleteUser(user.id)">
+                                                            <i class="fa fa-trash red"></i>
+                                                        </a>
+                                                    </td>
+                                            </tr>
+                                            </tbody>
+                                         </table>
+                        </ul>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
@@ -98,11 +108,6 @@
                                 </div>
                             </div>
 
-
-
-
-
-
                             <!--<div class="form-group">-->
                                 <!--<input v-model="form.cin" type="text" name="cin"-->
                                        <!--placeholder="Carte Identite Nationale"-->
@@ -146,46 +151,23 @@
                                 <has-error :form="form" field="password"></has-error>
                             </div>
 
-                                    <!--<div class="form-group">-->
-                                        <!--<input v-model="form.universite_id" type="text" name="universite_id"-->
-                                               <!--placeholder="universite_id"-->
-                                               <!--class="form-control" :class="{ 'is-invalid': form.errors.has('universite_id') }">-->
-                                        <!--<has-error :form="form" field="universite_id"></has-error>-->
-                                    <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<input v-model="form.etablissement_id" type="text" name="etablissement_id"-->
-                                       <!--placeholder="etablissement_id"-->
-                                       <!--class="form-control" :class="{ 'is-invalid': form.errors.has('etablissement_id') }">-->
-                                <!--<has-error :form="form" field="etablissement_id"></has-error>-->
-                            <!--</div>-->
-
-
-
                             <div class="form-group">
                                     <select type="text" name="profile" v-model="form.profile" id="profile"
-                                            class="form-control" :class="{ 'is-invalid': form.errors.has('profile') }" required autofocus >
-
-                                    <option value="">Select User Role</option>
+                                            class="form-control" :class="{ 'is-invalid': form.errors.has('profile') }"
+                                            required autofocus >
+                                      <option value="">Select User Role</option>
                                         <option value="Etudiant">Etudiant</option>
                                         <option value="Enseignant">Enseignant</option>
-
                                 </select>
                                 <has-error :form="form" field="profile"></has-error>
                             </div>
 
 
-                            <div class="form-group">
+                            <div class="form-group" id="divgrade" style="display:none;">
                                 <select type="text" name="grade" v-model="form.grade" id="grade"
-                                        class="form-control" :class="{ 'is-invalid': form.errors.has('grade') }" required autofocus >
-                                    <option value="">Select User Grade</option>
-                                    <option value="Professeur">Professeur</option>
-                                    <option value="Maitre de conference">Maitre de conference</option>
-                                    <option value="Maitre Assisstant">Maitre Assisstant</option>
-                                    <option value="Maitre Technologue">Maitre Technologue</option>
-                                    <option value="Technologue">Technologue</option>
-                                    <option value="Assisstant">Assisstant</option>
-                                    <option value="P.E.S">Professeur d'enseignement supérieur</option>
-                                    <option value="etudiant">Etudiant</option>
+                                        class="form-control" :class="{ 'is-invalid': form.errors.has('grade') }"
+                                        required autofocus >
+
 
                                 </select>
                                 <has-error :form="form" field="grade"></has-error>
@@ -244,9 +226,10 @@
             return {
                 editmode: false,
                 users : {},
-                universites:{},
-                etablissements:{},
+                universite:{},
+                etablissement:{},
                 form: new Form({
+
                     id:'',
                     cin:'',
                     name : '',
@@ -264,14 +247,20 @@
                     bio: '',
                     photo: '',
 
+                    intitule: '',
 
-
+                    intitule: '',
 
 
                 })
             }
         },
         methods: {
+                //
+                // loaduniversites(){
+                //          axios.get("/universites").then(({ data }) => (this.universites = data));
+                //
+                // },
             getResults(page = 1) {
                 axios.get('api/user?page=' + page)
                     .then(response => {
@@ -343,9 +332,9 @@
                 })
             },
             loadUsers(){
-                if(this.$gate.isSuperadministratorOrAdministratorOrEnseignant()){
+
                     axios.get("api/user").then(({ data }) => (this.users = data));
-                }
+
             },
 
             createUser(){

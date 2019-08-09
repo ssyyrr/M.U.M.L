@@ -18,7 +18,6 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 
-
 Route::get('/ajax-etab', 'Auth\RegisterController@ajaxetab')->name('ajaxetab');
 
 
@@ -39,6 +38,6 @@ Route::get('invoice', function(){
     return view('invoice');
 });
 
-Route::get('{path}',"HomeController@index")->where( 'path', '([A-z\d-\/_.]+)?' );
+Route::get('{anypath}',"HomeController@index")->where( 'path', '([A-z\d-\/_.]+)?' );
 
 //Route::controller('universite', 'UniversiteController');
