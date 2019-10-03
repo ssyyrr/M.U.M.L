@@ -4,10 +4,11 @@ namespace Illuminate\Foundation\Auth;
 
 use App\Etablissement;
 use App\Universite;
+use Illuminate\Support\Facades\Input;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Input;
 
 trait RegistersUsers
 {
@@ -20,17 +21,23 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
+        $universites = Universite::all();
 
-       $universites = Universite::all();
-       return view('auth.register', compact('universites'));
+        return view('auth.register', compact('universites'));
     }
+    public function ajaxetab(Request $request)
+    {
 
-    public function ajaxetab(Request $request){
         $id_univ = \Illuminate\Support\Facades\Input::get('id_univ');
 
+
+
         $etablissements = Etablissement::WHERE('universite_id','=',$id_univ)->get();
+
         return ($etablissements);
+
     }
+
     /**
      * Handle a registration request for the application.
      *

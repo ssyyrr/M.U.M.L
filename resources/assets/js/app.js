@@ -178,26 +178,26 @@ $(function () {
          $("input").inputmask();
 
         // Set up a Select2 control
-        $('select').select2({
-            tags: "true",
-            placeholder: "--Select an option--",
-            width: 'resolve',
-            allowClear: true
-        });
+        //             $('select').select2({
+        //                 tags: "true",
+        //                 placeholder: "--Select an option--",
+        //                 width: 'resolve',
+        //                 allowClear: true
+        //             });
 
         // Bind an event
-        $('select').on('select2:select', function (e) {
-            console.log('select event');
-        });
-        $('select').on("click", function () {
-            this.val("CA").trigger("change");
-        });
-        $('select').on('select2:select', function (e) {
+        //         $('select').on('select2:select', function (e) {
+        //             console.log('select event');
+        // });
+                    // $('select').on("click", function () {
+                    //     this.val("CA").trigger("change");
+        // });
+                    // $('select').on('select2:select', function (e) {
+                    //
+                    //     var data = e.params.data;
+                    //     console.log(data);
 
-            var data = e.params.data;
-            console.log(data);
-
-        });
+        // });
         // Destroy Select2
         //         $('select').select2('destroy');
         //

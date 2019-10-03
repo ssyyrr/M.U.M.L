@@ -19,7 +19,7 @@ class Universite extends Model
 
     }
 
-    public static function querySelect(  ){
+/*     public static function querySelect(  ){
 
         return "  SELECT universites.* FROM universites  ";
     }
@@ -32,7 +32,7 @@ class Universite extends Model
     public static function queryGroup(){
         return "  ";
     }
-
+ */
 
 
     public function users(){

@@ -32,7 +32,8 @@
 
                     <p>{{ Auth::user()->name }} -{{Auth::user()->prenom}}</p>
                     <p>  {{Auth::user()->profile}}-{{Auth::user()->grade}}</p>
-                    <p>  {{Auth::user()->universite_id}}-{{Auth::user()->etablissement_id}}</p>
+                    <p>  {{Auth::user()->universite->intitule}}</p>
+                    <p>{{Auth::user()->etablissement_intitule}}</p>
                 </a>
 
             </div>

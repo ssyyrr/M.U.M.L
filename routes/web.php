@@ -5,6 +5,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+//sécuriser vos routes pour autoriser uniquement les utilisateurs vérifiés, utilisez le Middleware verified :
+//Route::get('profile', function () {
+//    // Seuls les utilisateurs vérifiés peuvent entrer ...
+//})->middleware('verified');
+
+//            Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
+
 //Auth::routes();
 //Auth::routes(['verify' => true]);
 
@@ -18,6 +27,10 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 
+//Activer la vérification des e-mails
+Auth::routes(['verify' => true]);
+
+
 Route::get('/ajax-etab', 'Auth\RegisterController@ajaxetab')->name('ajaxetab');
 
 
@@ -26,6 +39,7 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 
 
 

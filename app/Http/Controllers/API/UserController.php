@@ -227,30 +227,80 @@ class UserController extends Controller
         return ['message' => 'User Deleted'];
     }
 
-    public function search(){
+    public function search()
+    {
 
         if ($search = \Request::get('q'))
         {
 
+            if (\Gate::allows('isSuperadministratorOrAdministrator'))
 
-            $users = User::where(function($query) use ($search){
-                $query->where('name','LIKE',"%$search%")
-                    ->orWhere('email','LIKE',"%$search%")
-                    ->orWhere('cin','LIKE',"%$search%")
-                ->orWhere('universite_id','LIKE',"%$search%")
-                ->orWhere('etablissement_id','LIKE',"%$search%");
+            {
+                $users = User:: with('Universite')
 
-                ;
-            })->paginate(20);
+                    ->where('type', '!=', 'Superadministrator')
+                    ->orderBy('universite_id', 'ASC')
+                    ->orderBy('type', 'ASC')
+
+                    ->where(
+                        function($query) use ($search)
+                        {
+                            $query->where('name','LIKE',"%$search%")
+                                ->orWhere('prenom','LIKE',"%$search%")
+                                ->orWhere('email','LIKE',"%$search%")
+                                ->orWhere('cin','LIKE',"%$search%");
+                        }
+
+                    )
+
+
+                    ->paginate(20);
+
+
+
+
+            }
+
+
+            else
+
+            {
+                if( \Gate::allows('isEnseignant')){
+                    $etab = auth()->user()->etablissement_id;
+                    $users = User:: with('Universite')
+
+                        ->where('type', '!=', 'Superadministrator')
+                        ->where('type', '!=', 'Administrator')
+                        ->where('etablissement_id',$etab)
+
+                        ->orderBy('universite_id', 'ASC')
+                        ->orderBy('type', 'ASC')
+                        ->where(
+                            function($query) use ($search)
+                            {
+                                $query->where('name','LIKE',"%$search%")
+                                    ->orWhere('prenom','LIKE',"%$search%")
+                                    ->orWhere('email','LIKE',"%$search%")
+                                    ->orWhere('cin','LIKE',"%$search%");
+
+                            }
+
+                        )
+                        ->paginate(20);
+                }
+            }
+
 
         }
 
         else{
 
-            $users = User::latest()->paginate(5);
-        }
+           $users = $this->index();
+ //            $users = User:: with('Universite')
+//               ->paginate(5);
+             }
 
-        return $users;
+     return $users;
 
     }
 

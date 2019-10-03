@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Universite;
+
+ 
 
 class UniversiteController extends Controller
 {
@@ -14,6 +17,7 @@ class UniversiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
 //    public function universites()
 //    {
 //////        $universites = Universite::all();
@@ -28,17 +32,11 @@ class UniversiteController extends Controller
 
     public function index()
     {
-//        $universites = Universite::all();
-//         return view('layouts.sections.sidebar',compact('universites'));
-//
-////         )->with('universites', $universites);
+        return universites::all()->paginate(10);
+    
+    }
+    
 
-      }
-    /**&
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //

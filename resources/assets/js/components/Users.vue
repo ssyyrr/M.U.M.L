@@ -14,9 +14,11 @@
                     <!-- /.card-header -->
 
                     <div class="card-body table-responsive p-0">
+
                         <ul v-for="user in users.data" :key="user.id ">
                             <li> <i class="fa fa-landmark purple"> {{user.universite.intitule}} </i></li>
-                                         <table class="table table-hover">
+
+                            <table class="table table-hover">
                                             <tbody>
                                             <tr>
                                                 <!--<th>ID</th>-->
@@ -100,10 +102,10 @@
                                            type='text'
                                            v-model="form.cin"
                                            placeholder="Carte Identite Nationale"
-                                           data-inputmask="'mask':'99999999'"  data-mask
                                            name='cin' required
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('cin') }">
                                     <has-error :form="form" field="cin"></has-error>
+                                    <!--data-inputmask="'mask':'99999999'"  data-mask-->
 
                                 </div>
                             </div>
@@ -115,43 +117,66 @@
                                 <!--<has-error :form="form" field="cin"></has-error>-->
                             <!--</div>-->
 
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <label for='name' class="col-md-4 col-form-label text-md-right">Name</label>
+                                <span class="fas fa-user form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
                                 <input v-model="form.name" type="text" name="name"
                                        placeholder="Name"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                                 <has-error :form="form" field="name"></has-error>
                             </div>
+                            </div>
 
 
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <label for='Prenom' class="col-md-4 col-form-label text-md-right">Prenom</label>
+                                <span class="fas fa-user-friends form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
                                 <input v-model="form.prenom" type="text" name="prenom"
                                        placeholder="prenom"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('prenom') }">
                                 <has-error :form="form" field="prenom"></has-error>
+                                </div>
                             </div>
 
-                            <div class="form-group">
+                           <div class="form-group row">
+                            <label for='datenaissance' class="col-md-4 col-form-label text-md-right">Date de Naissance</label>
+                            <span class="fa fa-calendar form-control-row"  aria-hidden="true" ></span>
+                            <div class="col-md-6">
                                 <input v-model="form.datenaissance" type="text" name="datenaissance"
-                                       placeholder="datenaissance"
+                                       placeholder="dd/mm/yyyy"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('datenaissance') }">
                                 <has-error :form="form" field="datenaissance"></has-error>
                             </div>
+                        </div>
 
 
-                            <div class="form-group">
-                                <input v-model="form.email" type="email" name="email"
+                            <div class="form-group row">
+                                <label for='email' class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                <span class="fas fa-at form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
+                                    <input v-model="form.email" type="email" name="email"
                                        placeholder="E-Mail Address"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                                 <has-error :form="form" field="email"></has-error>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <input v-model="form.password" type="password" name="password" id="password" placeholder="Password"
+                            <div class="form-group row">
+                                <label for='password' class="col-md-4 col-form-label text-md-right">Password</label>
+                                <span class="fas fa-unlock form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
+                                    <input v-model="form.password" type="password" name="password" id="password" placeholder="Password"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
                                 <has-error :form="form" field="password"></has-error>
+                                </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <label for='profile' class="col-md-4 col-form-label text-md-right">Profile</label>
+                                <span class="fas fa-graduation-cap form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
                                     <select type="text" name="profile" v-model="form.profile" id="profile"
                                             class="form-control" :class="{ 'is-invalid': form.errors.has('profile') }"
                                             required autofocus >
@@ -160,34 +185,52 @@
                                         <option value="Enseignant">Enseignant</option>
                                 </select>
                                 <has-error :form="form" field="profile"></has-error>
+                                </div>
                             </div>
 
 
-                            <div class="form-group" id="divgrade" style="display:none;">
-                                <select type="text" name="grade" v-model="form.grade" id="grade"
+                            <!--<div class="form-group" id="divgrade" style="display:none;">-->
+                            <div class="form-group row">
+                                <label for='grade' class="col-md-4 col-form-label text-md-right">Grade</label>
+                                <span class="fas fa-user-graduate form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
+                                    <select type="text" name="grade" v-model="form.grade" id="grade"
                                         class="form-control" :class="{ 'is-invalid': form.errors.has('grade') }"
                                         required autofocus >
 
 
                                 </select>
                                 <has-error :form="form" field="grade"></has-error>
+                                </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <label for='addresse' class="col-md-4 col-form-label text-md-right">Addresse</label>
+                                <span class="fas fa-map-marker-alt form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
                                 <input v-model="form.addresse" type="text" name="addresse"
                                        placeholder="addresse"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('addresse') }">
                                 <has-error :form="form" field="addresse"></has-error>
+                                </div>
                             </div>
-                            <div class="form-group">
+
+                            <div class="form-group row">
+                                <label for='numtel' class="col-md-4 col-form-label text-md-right">Numero Telephone</label>
+                                <span class="fas fa-phone-volume form-control-row"  aria-hidden="true" ></span>
+                                <div class="col-md-6">
                                 <input v-model="form.numtel" type="text" name="numtel"
                                        placeholder="numtel"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('numtel') }">
                                 <has-error :form="form" field="numtel"></has-error>
-                            </div>
+                                </div></div>
 
-                            <div class="form-group">
-                                <select name="type" v-model="form.type" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }"
+                            <div class="form-group row">
+                                <label for='type' class="col-md-4 col-form-label text-md-right">Valider User</label>
+                                <!--<span class="fas fa-phone-volume form-control-row"  aria-hidden="true" ></span>-->
+                                <div class="col-md-6">
+                                    <select name="type" v-model="form.type"
+                                            id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }"
                                         required autofocus>
                                     <option value="">--Valider Utilisateur--</option>
                                     <option value="User">Standard User</option>
@@ -195,6 +238,7 @@
                                     <option value="Enseignant">Enseignant</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>
+                                </div>
                             </div>
 
                             <div class="form-group">

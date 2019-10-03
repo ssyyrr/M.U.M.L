@@ -78,10 +78,12 @@
                                 <form class="form-horizontal">
 
                                     <div class="form-group">
-                                            <label for="inputcin" class="col-sm-4 control-label">Carte Identite Nationale</label>
+                                        <span class="fas fa-address-card form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputcin" class="col-sm-4 control-label">Carte Identite Nationale</label>
 
                                             <div class="col-sm-12">
-                                                <input type="text" v-model="form.cin" class="form-control" id="inputcin" placeholder="cin"
+                                                <input type="text" v-model="form.cin" class="form-control" id="inputcin"
+                                                       placeholder="Carte Identite Nationale"
                                                        :class="{ 'is-invalid': form.errors.has('cin') }">
                                                 <has-error :form="form" field="cin"></has-error>
                                             </div>
@@ -89,7 +91,8 @@
 
 
                                     <div class="form-group">
-                                            <label for="inputName" class="col-sm-4 control-label">Name</label>
+                                        <span class="fas fa-user form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputName" class="col-sm-4 control-label">Name</label>
 
                                             <div class="col-sm-12">
                                             <input type="text" v-model="form.name" class="form-control" id="inputName" placeholder="Name"
@@ -100,7 +103,8 @@
 
 
                                     <div class="form-group">
-                                            <label for="inputprenom" class="col-sm-4 control-label">prenom</label>
+                                        <span class="fas fa-user-friends form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputprenom" class="col-sm-4 control-label">prenom</label>
 
                                             <div class="col-sm-12">
                                                 <input type="text" v-model="form.prenom" class="form-control" id="inputprenom" placeholder="prenom"
@@ -108,8 +112,10 @@
                                                 <has-error :form="form" field="prenom"></has-error>
                                             </div>
                                     </div>
+
                                     <div class="form-group">
-                                            <label for="inputdatenaissance" class="col-sm-4 control-label">datenaissance {{form.datenaissance}}</label>
+                                        <span class="fa fa-calendar form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputdatenaissance" class="col-sm-4 control-label">datenaissance {{form.datenaissance}}</label>
 
                                             <div class="col-sm-12">
                                                 <input type="text"  v-model="form.datenaissance"
@@ -125,7 +131,8 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                            <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+                                        <span class="fas fa-at form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputEmail" class="col-sm-4 control-label">E-Mail Address</label>
 
                                             <div class="col-sm-12">
                                             <input type="email" v-model="form.email" class="form-control" id="inputEmail" placeholder="Email"
@@ -135,7 +142,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <label for="password" class="col-sm-12 control-label">Passport (leave empty if not changing)</label>
+                                        <span class="fas fa-unlock form-control-row"  aria-hidden="true" ></span>
+                                        <label for="password" class="col-sm-12 control-label">Passport (leave empty if not changing)</label>
 
                                             <div class="col-sm-12">
                                                 <input type="password"
@@ -150,7 +158,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="inputuniversite" class="col-sm-4 control-label">universite</label>
+                                        <span class="fas fa-university  form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputuniversite" class="col-sm-4 control-label">Universite</label>
 
                                         <div class="col-sm-12">
                                             <input type="text" v-model="form.universite_id" class="form-control" id="inputuniversite_id" placeholder="universite_id"
@@ -160,7 +169,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="inputetablissement" class="col-sm-4 control-label">etablissement</label>
+                                        <span class="fas fa-home  form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputetablissement" class="col-sm-4 control-label">Etablissement</label>
 
                                         <div class="col-sm-12">
                                             <input type="text" v-model="form.etablissement_id" class="form-control" id="inputetablissement_id" placeholder="etablissement_id"
@@ -172,8 +182,9 @@
 
 
                                     <div class="form-group" id="vue-example" >
+                                        <span class="fas fa-graduation-cap  form-control-row"  aria-hidden="true" ></span>
                                         <label for="inputprofile" class="col-sm-4 control-label">
-                                            <span> profile : {{ form.profile }} </span>
+                                            <span> profile  : {{ form.profile }} </span>
                                         </label>
 
                                         <div class="col-sm-12">
@@ -191,22 +202,29 @@
                                         </div>
                                         <br>
 
-                                         <label for="inputgrade"
+                                        <span class="fas fa-user-graduate form-control-row"  aria-hidden="true" ></span>
+
+                                        <label for="inputgrade"
                                                class="col-sm-4 control-label">
-                                            <span>   grade : {{ form.grade }}  </span>
+                                            <span>   Grade  : {{ form.grade }}  </span>
                                         </label>
 
-                                        <div class="col-sm-12">
+                                          <div class="col-sm-12">
                                             <select
                                                       style="width: 50%" name="grade" v-model="form.grade"
                                                      class="form-control" id="grade" placeholder="grade"
                                                      :class="{ 'is-invalid': form.errors.has('grade') }" >
-                                             </select>
+                                                <!--<option selected="form.grade" value="form.grade">{{form.grade}}</option>-->
+                                            </select>
                                             <has-error :form="form" field="grade"></has-error>
                                         </div>
+
+
+
                                     </div>
                                     
                                     <div class="form-group">
+                                        <span class="fas fa-map-marker-alt form-control-row"  aria-hidden="true" ></span>
                                         <label for="inputaddresse" class="col-sm-4 control-label">addresse</label>
 
                                         <div class="col-sm-12">
@@ -218,7 +236,8 @@
 
 
                                     <div class="form-group">
-                                        <label for="inputnumtel" class="col-sm-4 control-label">numtel</label>
+                                        <span class="fas fa-phone-volume form-control-row"  aria-hidden="true" ></span>
+                                        <label for="inputnumtel" class="col-sm-4 control-label">Numero Telephone</label>
 
                                         <div class="col-sm-12">
                                             <input type="text" v-model="form.numtel"  id="inputnumtel"
@@ -237,7 +256,8 @@
                                         <!--<label for="inputtype"  id="inputtype" v-model="form.type"  class="col-sm-12">{{form.type}}</label>-->
 
                                         <!--<div class="col-sm-12">-->
-                                            <input type="hidden" v-model="form.type" class="form-control" id="inputtype" placeholder="type"
+                                            <input type="hidden" v-model="form.type" class="form-control"
+                                                   id="inputtype" placeholder="type"
                                                    :class="{ 'is-invalid': form.errors.has('type') }">
                                             <has-error :form="form" field="type"></has-error>
                                         <!--</div>-->
