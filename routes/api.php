@@ -24,5 +24,18 @@ Route::get('findUser', 'API\UserController@search');
 Route::put('profile', 'API\UserController@updateProfile');
 
 
-Route::Resources(['universites' => 'UniversiteController']);
 
+Route::middleware('auth:api')->get('/universite', function (Request $request) {
+    return $request->universite();
+});
+Route::apiResources(['universite' => 'UniversiteController']);
+Route::get('findUniversite', 'UniversiteController@search');
+
+
+
+
+Route::middleware('auth:api')->get('/etablissement', function (Request $request) {
+    return $request->etablissement();
+});
+Route::apiResources(['etablissement' => 'EtablissementController']);
+Route::get('findEtablissement', 'EtablissementController@search');

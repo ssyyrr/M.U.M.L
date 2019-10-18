@@ -46,7 +46,7 @@ class UserController extends Controller
                 $etab = auth()->user()->etablissement_id;
                 return User::with('Universite')
                                          ->where('type', '!=', 'Superadministrator')
-                                        ->where('type', '!=', 'Administrator')
+                                         ->where('type', '!=', 'Administrator')
 
                                               ->where('etablissement_id',$etab)
 
@@ -59,12 +59,6 @@ class UserController extends Controller
 
 
      }
-
-//
-//User::whereDoesntHave('granteeReports',  function($q){
-//    $q->where('year', '=',  2017 );
-//})->get();
-
 
 
 

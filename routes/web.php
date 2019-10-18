@@ -28,7 +28,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 
 //Activer la vérification des e-mails
-Auth::routes(['verify' => true]);
+//Auth::routes(['verify' => true]);
 
 
 Route::get('/ajax-etab', 'Auth\RegisterController@ajaxetab')->name('ajaxetab');

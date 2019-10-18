@@ -1,3 +1,4 @@
+Etablissements
 <template>
     <div class="container">
         <div class="row mt-5" v-if="$gate.isSuperadministratorOrAdministratorOrEnseignant()">
@@ -5,7 +6,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Universites Table</h3>
+                        <h3 class="card-title">Etablissements Table</h3>
 
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal">Add New <i class="fa fa-landmark "></i></button>
@@ -14,50 +15,41 @@
                     <!-- /.card-header -->
 
                     <div class="card-body table-responsive p-0">
-                            <table class="table table-hover">
-                                            <tbody>
-                                            <tr>
-                                                <th> ID</th>
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th> ID</th>
 
-                                                <th> <i class="fa fa-landmark purple"> </i>Intitulé</th>
-                                                <th> <i > </i>Abreviation</th>
+                                <th> <i class="fa fa-landmark purple"> </i>Intitulé</th>
+                                <th> <i > </i>Abreviation</th>
 
-                                                <th> <i class="fa fa-edit  blue"> Modify </i></th>
-                                                <th> <i class="fa fa-trash red"> Delete </i></th>
+                                <th> <i class="fa fa-edit  blue"> Modify </i></th>
+                                <th> <i class="fa fa-trash red"> Delete </i></th>
 
-                                            </tr>
+                            </tr>
 
-                                            <tr v-for="universite in universites.data" :key="universite.id ">
+                            <tr v-for="etablissement in etablissements.data" :key="etablissement.id ">
 
-                                                <td>{{universite.id}}</td>
-
-                                                <td>
-                                                     <a v-bind:href="`/etablissement/${universite.id}`">
-                                                     <!--<a :href="`/Etablissements/${universite.id}`">-->
-
-                                                     {{universite.intitule}}
-                                                     </a>
-                                                 </td>
-
-                                                <td>{{universite.abrev}}</td>
-
-                                                 <td>
-                                                        <a href="#" @click="editModal(universite)">
-                                                            <i class="fa fa-edit blue"></i>
-                                                        </a>
-                                                 </td>
-                                                 <td>
-                                                        <a href="#" @click="deleteUniversite(universite.id)">
-                                                            <i class="fa fa-trash red"></i>
-                                                        </a>
-                                                 </td>
-                                            </tr>
-                                            </tbody>
-                                         </table>
+                                <td>{{etablissement.id}}</td>
+                                <td>{{etablissement.intitule}}</td>
+                                <td>{{etablissement.abrev}}</td>
+                                <td>
+                                    <a href="#" @click="editModal(etablissement)">
+                                        <i class="fa fa-edit blue"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#" @click="deleteEtablissement(etablissement.id)">
+                                        <i class="fa fa-trash red"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <pagination :data="universites" @pagination-change-page="getResults"></pagination>
+                        <pagination :data="etablissements" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
                 <!-- /.card -->
@@ -74,37 +66,37 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" v-show="!editmode" id="addNewLabel">Add New</h5>
-                        <h5 class="modal-title" v-show="editmode" id="addNewLabel">Update universite's Info</h5>
+                        <h5 class="modal-title" v-show="editmode" id="addNewLabel">Update etablissement's Info</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
-                    <form @submit.prevent="editmode ? updateUniversite() : createUniversite()">
+                    <form @submit.prevent="editmode ? updateEtablissement() : createEtablissement()">
                         <div class="modal-body">
 
                             <div class="form-group row">
                                 <label for='intitule' class="col-md-4 col-form-label text-md-right">Intitule</label>
                                 <span class="fa fa-landmark form-control-row"  aria-hidden="true" ></span>
                                 <div class="col-md-6">
-                                <input v-model="form.intitule" type="text" name="intitule"
-                                        class="form-control" :class="{ 'is-invalid': form.errors.has('intitule') }">
-                                        <has-error :form="form" field="intitule"></has-error>
+                                    <input v-model="form.intitule" type="text" name="intitule"
+                                           class="form-control" :class="{ 'is-invalid': form.errors.has('intitule') }">
+                                    <has-error :form="form" field="intitule"></has-error>
+                                </div>
                             </div>
-                            </div> 
-                            
+
                             <div class="form-group row">
                                 <label for='abrev' class="col-md-4 col-form-label text-md-right">Abreviation</label>
                                 <span class="fa fa-landmark form-control-row"  aria-hidden="true" ></span>
                                 <div class="col-md-6">
-                                <input v-model="form.abrev" type="text" name="abrev"
-                                        class="form-control" :class="{ 'is-invalid': form.errors.has('abrev') }">
-                                <has-error :form="form" field="abrev"></has-error>
+                                    <input v-model="form.abrev" type="text" name="abrev"
+                                           class="form-control" :class="{ 'is-invalid': form.errors.has('abrev') }">
+                                    <has-error :form="form" field="abrev"></has-error>
+                                </div>
                             </div>
-                            </div> 
-                            
 
- 
+
+
 
                         </div>
                         <div class="modal-footer">
@@ -124,35 +116,36 @@
 
 <script>
     export default {
-        
-        data() 
+
+        data()
         {
             return {
                 editmode: false,
-                 universites:{},
-                 form: new Form({
+                etablissements:{},
+                form: new Form({
 
                     id:'',
+                    universite_id:'',
                     intitule: '',
                     abrev: '',
 
                 })
             }
         },
-        
+
         methods: {
 
             getResults(page = 1) {
-                axios.get('api/universite?page=' + page)
+                axios.get('api/etablissement?page=' + page)
                     .then(response => {
-                        this.universites = response.data;
+                        this.etablissements = response.data;
                     });
             },
-            updateUniversite()
+            updateEtablissement()
             {
                 this.$Progress.start();
                 // console.log('Editing data');
-                this.form.put('api/universite/'+this.form.id)
+                this.form.put('api/etablissement/'+this.form.id)
                     .then(() => {
                         // success
                         $('#addNew').modal('hide');
@@ -169,18 +162,18 @@
                     });
 
             },
-            editModal(universite){
+            editModal(etablissement){
                 this.editmode = true;
                 this.form.reset();
                 $('#addNew').modal('show');
-                this.form.fill(universite);
+                this.form.fill(etablissement);
             },
             newModal(){
                 this.editmode = false;
                 this.form.reset();
                 $('#addNew').modal('show');
             },
-            deleteUniversite(id){
+            deleteEtablissement(id){
                 swal({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -193,7 +186,7 @@
 
                     // Send request to the server
                     if (result.value) {
-                        this.form.delete('api/universite/'+id).then(()=>{
+                        this.form.delete('api/etablissement/'+id).then(()=>{
                             swal(
                                 'Deleted!',
                                 'Your file has been deleted.',
@@ -206,23 +199,24 @@
                     }
                 })
             },
-            loadUniversites(){
+            loadEtablissements(){
 
-                    axios.get("api/universite").then(({ data }) => (this.universites = data));
+                axios.get("api/etablissement").then(({ data }) => (this.etablissements = data));
 
+                    // axios.get(`/etablissement/30`).then(({ data }) => (this.etablissements = data));
             },
 
-            createUniversite(){
+            createEtablissement(){
                 this.$Progress.start();
 
-                this.form.post('api/universite')
+                this.form.post('api/etablissement')
                     .then(()=>{
                         Fire.$emit('AfterCreate');
                         $('#addNew').modal('hide')
 
                         toast({
                             type: 'success',
-                            title: 'Universite Created in successfully'
+                            title: 'Etablissement Created in successfully'
                         })
                         this.$Progress.finish();
 
@@ -232,23 +226,23 @@
                     })
             }
         },
-        
+
         created() {
             Fire.$on('searching',() => {
                 let query = this.$parent.search;
-                axios.get('api/findUniversite?q=' + query)
+                axios.get('api/findEtablissement?q=' + query)
                     .then((data) => {
-                        this.universites = data.data
+                        this.etablissements = data.data
                     })
                     .catch(() => {
 
                     })
             })
-            this.loadUniversites();
+            this.loadEtablissements();
             Fire.$on('AfterCreate',() => {
-                this.loadUniversites();
+                this.loadEtablissements();
             });
-            //    setInterval(() => this.loadUniversites(), 3000);
+            //    setInterval(() => this.loadEtablissements(), 3000);
         }
 
     }

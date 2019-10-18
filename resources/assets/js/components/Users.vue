@@ -16,7 +16,7 @@
                     <div class="card-body table-responsive p-0">
 
                         <ul v-for="user in users.data" :key="user.id ">
-                            <li> <i class="fa fa-landmark purple"> {{user.universite.intitule}} </i></li>
+                            <li> <i class="fa fa-landmark purple"> user.universite.intitule </i></li>
 
                             <table class="table table-hover">
                                             <tbody>
@@ -42,7 +42,7 @@
                                                     <td>{{user.name}}</td>
                                                     <td>{{user.prenom}}</td>
                                                     <td>{{user.email}}</td>
-                                                    <!--<td>{{user.universite.intitule}}</td>-->
+                                                    
                                                      <td>{{user.etablissement_id}}</td>
                                                       <!--<td>{{user.etablissement.intitule}}</td>-->
 
